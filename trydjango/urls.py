@@ -1,8 +1,7 @@
-"""
-URL configuration for trydjango project.
+"""trydjango URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 
 from accounts.views import (
     login_view,
@@ -30,10 +29,11 @@ from articles.views import (
 from .views import home_view
 
 urlpatterns = [
-    path('', home_view),
+    path('', home_view), # index / home / root
     path('articles/', article_search_view),
-    path('articles/create/', article_create_view),
-    path('articles/<int:id>/', article_detail_view),
+    path('articles/create/', article_create_view, name='article-create'),
+    path('articles/<slug:slug>/', article_detail_view, name='article-detail'),
+    # re_path(r'articles/(?P<id>\d+)/$', home_view),
     path('admin/', admin.site.urls),
     path('login/', login_view),
     path('logout/', logout_view),
