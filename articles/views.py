@@ -7,10 +7,19 @@ from .models import Article
 # Create your views here.
 
 def article_search_view(request):
-    query = request.GET.get('q')
-    qs = Article.objects.search(query=query)
+    # print(dir(request))
+    # print(request.GET)
+    query_dict = request.GET # this is a dictionary
+    # query = query_dict.get("q") # <input type='text' name='q' />
+    try:
+        query = int(query_dict.get("q"))
+    except:
+        query = None
+    article_obj = None
+    if query is not None:
+        article_obj = Article.objects.get(id=query)
     context = {
-        "object_list": qs
+        "object": article_obj
     }
     return render(request, "articles/search.html", context=context)
 
