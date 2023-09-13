@@ -58,7 +58,7 @@ def recipe_update_view(request, id=None):
         # formset.save()
         for form in formset:
             child = form.save(commit=False)
-            if child.recipe is None:
+            if not hasattr(child, 'recipe'):
                 print("Added new")
                 child.recipe = parent
             child.save()
