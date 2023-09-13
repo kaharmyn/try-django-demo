@@ -3,7 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import RecipeForm
 from .models import Recipe
-
+# CRUD -> Create Retrieve Update & Delete
+# FBV -> CBV
 
 @login_required
 def recipe_list_view(request):
