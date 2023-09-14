@@ -21,7 +21,6 @@ class RecipeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # django-crispy-forms
         for field in self.fields:
-            print(field)
             new_data = {
                 "placeholder": f'Recipe {str(field)}',
                 "class": 'form-control',
