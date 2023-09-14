@@ -11,7 +11,7 @@ from .models import Recipe, RecipeIngredient
 class RecipeForm(forms.ModelForm):
     error_css_class = 'error-field'
     required_css_class = 'required-field'
-    name = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Recipe name"}))
+    name = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Recipe name"}), help_text='This is your help  ')
     # description = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}))
     class Meta:
         model = Recipe
@@ -19,6 +19,7 @@ class RecipeForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # django-crispy-forms
         for field in self.fields:
             print(field)
             new_data = {
