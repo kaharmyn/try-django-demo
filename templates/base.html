@@ -2,8 +2,24 @@
 <html lang="en">
 <head>
     <script src="https://unpkg.com/htmx.org@1.9.5"></script>
-    <meta charset="UTF-8">
+    <!--<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    -->
+    <style>
+
+        .htmx-indicator {
+            display: none;
+        }
+        .htmx-request .htmx-indicator {
+            display: inline;
+        }
+        .htmx-inverted-indicator {
+            display: inline;
+        }
+        .htmx-request .htmx-inverted-indicator {
+            display: none;
+        }
+    </style>
     <title>Base</title>
 </head>
 <body>
