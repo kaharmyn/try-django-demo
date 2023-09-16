@@ -1,11 +1,9 @@
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
-from django.db.models.query import QuerySet
 from django.db.models.signals import pre_save, post_save
 from django.urls import reverse
 from django.utils import timezone
-# Create your models here.
 
 from .utils import slugify_instance_title
 
@@ -36,6 +34,10 @@ class Article(models.Model):
     publish = models.DateField(auto_now_add=False, auto_now=False, null=True, blank=True)
 
     objects = ArticleManager()
+
+    @property
+    def name(self):
+        return self.title
 
     def get_absolute_url(self):
         # return f'/articles/{self.slug}/'
