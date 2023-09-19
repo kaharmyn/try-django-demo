@@ -1,5 +1,6 @@
 .DS_Store
 bin/
+staticfiles-cdn/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
