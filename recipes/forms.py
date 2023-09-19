@@ -6,7 +6,12 @@ from django.db.models.base import Model
 from django.forms.utils import ErrorList
 
 
-from .models import Recipe, RecipeIngredient
+from .models import Recipe, RecipeIngredient, RecipeIngredientImage
+
+class RecipeIngredientImageForm(forms.ModelForm):
+    class Meta:
+        model = RecipeIngredientImage
+        fields = ['image']
 
 class RecipeForm(forms.ModelForm):
     error_css_class = 'error-field'
